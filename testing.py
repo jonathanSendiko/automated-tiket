@@ -64,7 +64,7 @@ class PythonOrgSearch(unittest.TestCase):
             EC.presence_of_element_located(
                 (
                     By.XPATH,
-                    '//*[@id="startDate"]/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/table/tbody/tr[2]/td[5]/div',
+                    '//*[@id="startDate"]/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/table/tbody/tr[3]/td[3]/div',
                 )
             )
         )
@@ -76,7 +76,7 @@ class PythonOrgSearch(unittest.TestCase):
             EC.presence_of_element_located(
                 (
                     By.XPATH,
-                    '//*[@id="endDate"]/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/table/tbody/tr[2]/td[6]/div',
+                    '//*[@id="endDate"]/div[2]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/table/tbody/tr[3]/td[5]/div',
                 )
             )
         )
@@ -149,6 +149,7 @@ class PythonOrgSearch(unittest.TestCase):
         actionDestination.click(chooseDestination).perform()
 
         # title
+        time.sleep(5)
         actionTitle = ActionChains(driver)
         titleInput = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(
@@ -196,30 +197,32 @@ class PythonOrgSearch(unittest.TestCase):
         )
         namaPenumpang.send_keys("Jonathan")
 
-        actionNegara = ActionChains(driver)
-        kewarganegaraan = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located(
-                (
-                    By.XPATH,
-                    '//*[@id="app"]/div/div[3]/div[3]/div/div[2]/div/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div/input',
-                )
-            )
-        )
-        actionNegara.click(kewarganegaraan).perform()
-        time.sleep(1)
-        kewarganegaraan.send_keys(Keys.ARROW_DOWN)
-        kewarganegaraan.send_keys(Keys.RETURN)
+        # actionNegara = ActionChains(driver)
+        # kewarganegaraan = WebDriverWait(driver, 10).until(
+        #     EC.presence_of_element_located(
+        #         (
+        #             By.XPATH,
+        #             '//*[@id="app"]/div/div[3]/div[3]/div/div[2]/div/div[1]/div/div[2]/div[2]/div/div[2]/div[3]/div/div/div/input',
+        #         )
+        #     )
+        # )
+        # if kewarganegaraan is not None:
+        #     actionNegara.click(kewarganegaraan).perform()
+        #     time.sleep(1)
+        #     kewarganegaraan.send_keys(Keys.ARROW_DOWN)
+        #     kewarganegaraan.send_keys(Keys.RETURN)
 
-        driver.execute_script("window.scrollTo(0, 1080)")
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
         actionPembayaran = ActionChains(driver)
         pembayaranBtn = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located(
                 (
                     By.XPATH,
-                    '//*[@id="app"]/div/div[3]/div[3]/div/div[2]/div/div[1]/div/div[6]/button',
+                    '//*[@id="app"]/div/div[3]/div[3]/div/div[2]/div/div[1]/div/div[7]/button',
                 )
             )
         )
+        time.sleep(1)
         actionPembayaran.click(pembayaranBtn).perform()
 
         actionConfirm = ActionChains(driver)
